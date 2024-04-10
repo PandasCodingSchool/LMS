@@ -1,0 +1,28 @@
+<header class="bg-white shadow">
+  <div class=" flex justify-between align-middle mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="flex justify-between align-middle">
+        <span class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</span>
+        <div *ngIf="user" class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <!-- <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> -->
+              <a routerLink="catalogues" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Catalogues</a>
+              <a href="#" ngClass="current" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Members</a>
+              <a href="#" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Circulation</a>
+              <a href="#" class="text-gray-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Acquisition</a>
+
+            </div>
+          </div>
+    </div>
+    <button
+      class="flex  justify-center cursor-pointer rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+    >
+      Add new Administer
+    </button>
+  </div>
+</header>
+<main>
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <router-outlet></router-outlet>
+  </div>
+</main>
