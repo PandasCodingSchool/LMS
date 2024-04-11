@@ -2,17 +2,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CatalogueService } from '../../services/catalogue.service';
 import { CommonModule } from '@angular/common';
+import { MemberService } from '../../services/members.service';
 
 @Component({
-  selector: 'app-catalogue-dialog',
+  selector: 'app-member-dialog',
   standalone: true,
   imports: [ReactiveFormsModule,CommonModule],
-  templateUrl: './catalogue-dialog.component.html',
-  styleUrl: './catalogue-dialog.component.css'
+  templateUrl: './member-dialog.component.html',
+  styleUrl: './member-dialog.component.css'
 })
-export class DialogComponent implements OnInit {
+export class MemberDialogComponent implements OnInit {
 
-  constructor( private catalogueService:CatalogueService){
+  constructor( private memberService:MemberService){
   }
 
   createForm!:FormGroup;
@@ -23,9 +24,8 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
   this.createForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
-    description:new FormControl('',[Validators.required]),
-    author:new FormControl('',[Validators.required]),
-    category: new  FormControl(null,[Validators.required])
+    email: new FormControl('',[Validators.required,Validators.email]),
+    department: new FormControl('',[Validators.required])
   })
   }
 
@@ -33,7 +33,7 @@ export class DialogComponent implements OnInit {
     this.onSubmit.emit(true);
     console.log(this.createForm.value);
     if(this.createForm.valid){
-      this.catalogueService.create(this.createForm.value).subscribe(()=>{
+      this.memberService.create(this.createForm.value).subscribe(()=>{
         this.onSubmit.emit(true);
       })
     }

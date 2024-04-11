@@ -1,6 +1,6 @@
 <div>
   <div class="w-full flex justify-between align-middle p-2">
-    <span class="text-xl font-bold">Catalogues</span>
+    <span class="text-xl font-bold">Members</span>
     <div class="">
         <input
           type="text"
@@ -19,19 +19,17 @@
       <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Category</th>
+        <th>Email</th>
+        <th>Department</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let catalogue of catalogues">
-        <td>{{ catalogue.id }}</td>
-        <td>{{ catalogue.name }}</td>
-        <td>{{ catalogue.description }}</td>
-        <td>{{ catalogue.author }}</td>
-        <td>{{ catalogue.category }}</td>
+      <tr *ngFor="let member of members">
+        <td>{{ member.id }}</td>
+        <td>{{ member.name }}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.department}}</td>
         <td>
           <!-- <button
             class="px-4 py-1 m-1 bg-yellow-500 text-white rounded-md"
@@ -41,7 +39,7 @@
           </button> -->
           <button
             class="px-4 py-1 ml-4 m-1 bg-red-500 text-white rounded-md"
-            (click)="deleteCatalogue(catalogue.id)"
+            (click)="deleteMember(member.id)"
           >
             Delete
           </button>
@@ -50,7 +48,7 @@
     </tbody>
   </table>
   <ng-container *ngIf="showDialog">
-      <app-catalogue-dialog (onCancel)="closeDialog()" (onSubmit)="submit($event)"  ></app-catalogue-dialog>
+      <app-member-dialog (onCancel)="closeDialog()" (onSubmit)="submit($event)"  ></app-member-dialog>
   </ng-container>
 </div>
 

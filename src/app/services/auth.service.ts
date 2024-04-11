@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   login(payload: { email: string, password: string}){
-     return this.http.post('http://localhost:3000/login', payload);
+     return this.http.post('http://localhost:8085/auth/login', payload);
   }
 
   getUser(){

@@ -7,21 +7,21 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CatalogueService {
-  baseUrl = 'http://localhost:8080/catalogue'
+  baseUrl = 'http://localhost:8085/catalogues'
   constructor(private http:HttpClient) { }
   
   create(catalogue:Catalogue){
-    return this.http.post(`${this.baseUrl}`,catalogue)
+    return this.http.post(`${this.baseUrl}/create-catalogue`,catalogue)
   }
   delete(id:number){
-    return this.http.delete(`${this.baseUrl}/${id}`)
+    return this.http.delete(`${this.baseUrl}/delete-catalogue/${id}`)
   }
 
   getById(id:string){
-    return this.http.get(`${this.baseUrl}/search?id=${id}`)
+    return this.http.get(`${this.baseUrl}/search-catalogue/${id}`)
   }
 
   getAll():Observable<Catalogue[]>{
-    return this.http.get<Catalogue[]>(`${this.baseUrl}`)
+    return this.http.get<Catalogue[]>(`${this.baseUrl}/view-catalogues`)
   }
 }

@@ -55,10 +55,6 @@ export class CataloguesComponent implements OnInit {
     this.fetchCatalogues();
   }
 
-  editCatalogue(catalogue: Catalogue) {
-    console.log(catalogue);
-  }
-
   deleteCatalogue(catalogueId: number) {
     console.log(catalogueId);
   }
